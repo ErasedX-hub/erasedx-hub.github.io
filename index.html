@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ErasedX</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:black;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+color:white;
+overflow:hidden;
+cursor:none;
+}
+
+/* VIDEO */
+
+video{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+min-width:100%;
+min-height:100%;
+object-fit:cover;
+z-index:-1;
+}
+
+/* PROFILE */
+
+.pfp{
+width:140px;
+height:140px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid red;
+box-shadow:
+0 0 10px red,
+0 0 25px red,
+0 0 40px red;
+margin-bottom:20px;
+}
+
+/* USERNAME */
+
+.username{
+font-size:50px;
+color:#ff2a2a;
+text-shadow:
+0 0 10px red,
+0 0 25px red;
+margin-bottom:25px;
+}
+
+/* ICONS */
+
+.icons{
+display:flex;
+gap:40px;
+font-size:34px;
+margin-bottom:20px;
+}
+
+.icons a{
+color:#ff4d4d;
+transition:0.2s;
+}
+
+.icons a:hover{
+color:white;
+transform:scale(1.2);
+}
+
+/* MUSIC BUTTON */
+
+.music-btn{
+position:fixed;
+top:20px;
+right:20px;
+font-size:26px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+/* CURSOR */
+
+.cursor{
+position:fixed;
+width:18px;
+height:18px;
+border-radius:50%;
+background:red;
+pointer-events:none;
+box-shadow:
+0 0 10px red,
+0 0 25px red,
+0 0 40px red;
+transform:translate(-50%,-50%);
+z-index:9999;
+}
+
+</style>
+</head>
+
+<body>
+
+<video id="bgvideo" loop>
+<source src="background.mp4" type="video/mp4">
+</video>
+
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🔇</button>
+
+<div class="cursor"></div>
+
+<img src="pfp.png" class="pfp">
+
+<div class="username">ErasedX</div>
+
+<div class="icons">
+
+<a href="https://discord.com/users/YOURID">
+<i class="fa-brands fa-discord"></i>
+</a>
+
+<a href="https://instagram.com/YOURUSERNAME">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+</div>
+
+<script>
+
+/* MUSIC */
+
+let video = document.getElementById("bgvideo");
+let btn = document.getElementById("musicBtn");
+
+function toggleMusic(){
+
+if(video.paused){
+video.play();
+video.muted = false;
+btn.textContent = "🔊";
+}else{
+
+video.muted = !video.muted;
+
+if(video.muted){
+btn.textContent = "🔇";
+}else{
+btn.textContent = "🔊";
+}
+
+}
+
+}
+
+/* CURSOR */
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", e=>{
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
+});
+
+</script>
+
+</body>
+</html>
